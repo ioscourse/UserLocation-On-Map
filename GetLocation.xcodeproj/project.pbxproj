@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		367CB9501C0E7CF200A401F4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 367CB94F1C0E7CF200A401F4 /* CoreLocation.framework */; };
 		745C69401C0D17AF00E31F97 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745C693F1C0D17AF00E31F97 /* ProfileViewController.swift */; };
 		745C69421C0D18C900E31F97 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 745C69411C0D18C900E31F97 /* MapKit.framework */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		367CB94F1C0E7CF200A401F4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		745C693F1C0D17AF00E31F97 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		745C69411C0D18C900E31F97 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				367CB9501C0E7CF200A401F4 /* CoreLocation.framework in Frameworks */,
 				745C69421C0D18C900E31F97 /* MapKit.framework in Frameworks */,
 				81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */,
 				81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */,
@@ -108,6 +111,7 @@
 		81BA816A1A49DB5600E65899 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				367CB94F1C0E7CF200A401F4 /* CoreLocation.framework */,
 				745C69411C0D18C900E31F97 /* MapKit.framework */,
 				81BA816B1A49DB6800E65899 /* Bolts.framework */,
 				81BA816C1A49DB6800E65899 /* Parse.framework */,
