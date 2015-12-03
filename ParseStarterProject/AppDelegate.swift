@@ -18,6 +18,8 @@ import Parse
 // import ParseCrashReporting
 
 var un:String?
+var others:String?
+var newuser:Bool = false
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

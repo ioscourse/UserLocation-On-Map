@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3632BB741C0FE89D00E46CF5 /* PeopleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3632BB731C0FE89D00E46CF5 /* PeopleTableViewController.swift */; };
+		3632BB761C0FEAB500E46CF5 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3632BB751C0FEAB500E46CF5 /* ParseUI.framework */; };
+		3632BB781C0FF1CB00E46CF5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3632BB771C0FF1CB00E46CF5 /* HomeViewController.swift */; };
+		3632BB7A1C0FF45D00E46CF5 /* PeoplePFQueryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3632BB791C0FF45D00E46CF5 /* PeoplePFQueryTableViewController.swift */; };
 		367CB9501C0E7CF200A401F4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 367CB94F1C0E7CF200A401F4 /* CoreLocation.framework */; };
 		36F949451C0F47F600B3C845 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36F949441C0F47F600B3C845 /* Launch Screen.storyboard */; };
 		745C69401C0D17AF00E31F97 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745C693F1C0D17AF00E31F97 /* ProfileViewController.swift */; };
@@ -24,6 +28,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3632BB731C0FE89D00E46CF5 /* PeopleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleTableViewController.swift; sourceTree = "<group>"; };
+		3632BB751C0FEAB500E46CF5 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
+		3632BB771C0FF1CB00E46CF5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3632BB791C0FF45D00E46CF5 /* PeoplePFQueryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeoplePFQueryTableViewController.swift; sourceTree = "<group>"; };
 		367CB94F1C0E7CF200A401F4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		36F949441C0F47F600B3C845 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		745C693F1C0D17AF00E31F97 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3632BB761C0FEAB500E46CF5 /* ParseUI.framework in Frameworks */,
 				367CB9501C0E7CF200A401F4 /* CoreLocation.framework in Frameworks */,
 				745C69421C0D18C900E31F97 /* MapKit.framework in Frameworks */,
 				81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */,
@@ -68,6 +77,9 @@
 			isa = PBXGroup;
 			children = (
 				745C693F1C0D17AF00E31F97 /* ProfileViewController.swift */,
+				3632BB731C0FE89D00E46CF5 /* PeopleTableViewController.swift */,
+				3632BB771C0FF1CB00E46CF5 /* HomeViewController.swift */,
+				3632BB791C0FF45D00E46CF5 /* PeoplePFQueryTableViewController.swift */,
 			);
 			name = Pages;
 			sourceTree = "<group>";
@@ -114,6 +126,7 @@
 		81BA816A1A49DB5600E65899 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3632BB751C0FEAB500E46CF5 /* ParseUI.framework */,
 				367CB94F1C0E7CF200A401F4 /* CoreLocation.framework */,
 				745C69411C0D18C900E31F97 /* MapKit.framework */,
 				81BA816B1A49DB6800E65899 /* Bolts.framework */,
@@ -227,8 +240,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3632BB781C0FF1CB00E46CF5 /* HomeViewController.swift in Sources */,
 				745C69401C0D17AF00E31F97 /* ProfileViewController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
+				3632BB7A1C0FF45D00E46CF5 /* PeoplePFQueryTableViewController.swift in Sources */,
+				3632BB741C0FE89D00E46CF5 /* PeopleTableViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

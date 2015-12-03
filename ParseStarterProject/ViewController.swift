@@ -13,14 +13,24 @@ import CoreLocation
 import MapKit
 
 class ViewController: UIViewController , MKMapViewDelegate, CLLocationManagerDelegate{
+   var currentObject : PFObject?
     var timer:NSTimer?
+    
+    @IBAction func btnback(sender: AnyObject) {
+         self.dismissViewControllerAnimated(false, completion: nil)
+        
+    }
     var blnCenter:Bool = false
+    var strName:String?
 var mapuser:NSMutableArray = []
 var maplong:NSMutableArray = []
 var maplat:NSMutableArray = []
 var locationManager = CLLocationManager()
     @IBOutlet weak var txtfullnamde: UILabel!
    
+    @IBOutlet weak var txtperson: UILabel!
+    
+    
     @IBOutlet weak var btnProfiles: UIBarButtonItem!
     
     @IBAction func btnProfiles(sender: AnyObject) {
@@ -31,20 +41,32 @@ var locationManager = CLLocationManager()
     @IBOutlet weak var map: MKMapView!
     
     override func viewDidAppear(animated: Bool) {
-        un = ""
-       // map.showsUserLocation = true
+       strName = ""
          blnCenter = false
          map.showsUserLocation = true
         let defaults: NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        
         if let userNameNotNull = defaults.objectForKey("fullname") as? String {
-            self.txtfullnamde.text = defaults.objectForKey("fullname") as? String
-            un = self.txtfullnamde.text
+            if newuser == true
+            {
+                self.txtfullnamde.text = un
+            }
+           
+             strName = defaults.objectForKey("fullname") as! String
+           //print(strName!)
         }
         
-        
+        if let object = currentObject {
+            
+           self.txtperson.text = (object["fullname"] as! String)
+            
+        }
+        else
+        {
+             print(strName!)
+             self.txtperson.text = "Showing All Friends"
+        }
         let query = PFQuery(className:"MapLocation")
-        query.whereKey("fullname", equalTo: txtfullnamde.text!)
+        query.whereKey("fullname", equalTo: strName!)
         query.findObjectsInBackgroundWithBlock { (object: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 if object!.count > 0 {
@@ -58,8 +80,20 @@ var locationManager = CLLocationManager()
                 
             }
         }
+
+
+       timer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "checkname", userInfo: nil, repeats: true)
+        
+    }
+    func checkname()
+    {
         if self.txtfullnamde.text == "Enter FullName in Profile"
         {
+            
+            //            let fullname: NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            //            fullname.setObject(nil, forKey: "fullname")
+            //            fullname.synchronize()
+            
             let alertController = UIAlertController(title: "Fullname Reguired", message:
                 "Go to Profile", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
@@ -68,9 +102,8 @@ var locationManager = CLLocationManager()
         }
         else
         {
-             timer = NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: "updatelocation", userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: "updatelocation", userInfo: nil, repeats: true)
         }
-        
     }
     func updatelocation()
     {
@@ -83,33 +116,45 @@ var locationManager = CLLocationManager()
         self.mapuser = NSMutableArray()
          self.maplong = NSMutableArray()
          self.maplat = NSMutableArray()
-        let query = PFQuery(className:"MapLocation")
-        query.findObjectsInBackgroundWithBlock { (object: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                self.map.removeAnnotations(self.map.annotations)
-                for people in object! {
-                    print(people["longitude"] as? String)
-                    if people["longitude"] as? String != nil && people["longitude"] as? String != ""
-                    {
-                        let long:Double = Double((people["longitude"] as? String)!)!
-                        let lat:Double = Double((people["latitude"] as? String)!)!
-                        let TheirLocation = CLLocationCoordinate2DMake(lat, long)
-                    // Drop a pin
-                    let dropPin = MKPointAnnotation()
-                    dropPin.coordinate = TheirLocation
-                    dropPin.title = people["fullname"] as? String
-                    dropPin.subtitle = "Last Updated: \(people["lastupdate"] as! String)"
-                    self.map.addAnnotation(dropPin)
-                     
-                        
+         if let object = currentObject {
+            self.map.removeAnnotations(self.map.annotations)
+            let long:Double = Double((object["longitude"] as? String)!)!
+            let lat:Double = Double((object["latitude"] as? String)!)!
+            let TheirLocation = CLLocationCoordinate2DMake(lat, long)
+            // Drop a pin
+            let dropPin = MKPointAnnotation()
+            dropPin.coordinate = TheirLocation
+            dropPin.title = object["fullname"] as? String
+            dropPin.subtitle = "Last Updated: \(object["lastupdate"] as! String)"
+            self.map.addAnnotation(dropPin)
+            
+        }
+        else
+         {
+            let query = PFQuery(className:"MapLocation")
+            query.findObjectsInBackgroundWithBlock { (object: [PFObject]?, error: NSError?) -> Void in
+                if error == nil {
+                    self.map.removeAnnotations(self.map.annotations)
+                    for people in object! {
+                        print(people["longitude"] as? String)
+                        if people["longitude"] as? String != nil && people["longitude"] as? String != ""
+                        {
+                            let long:Double = Double((people["longitude"] as? String)!)!
+                            let lat:Double = Double((people["latitude"] as? String)!)!
+                            let TheirLocation = CLLocationCoordinate2DMake(lat, long)
+                            // Drop a pin
+                            let dropPin = MKPointAnnotation()
+                            dropPin.coordinate = TheirLocation
+                            dropPin.title = people["fullname"] as? String
+                            dropPin.subtitle = "Last Updated: \(people["lastupdate"] as! String)"
+                            self.map.addAnnotation(dropPin)
+                        }
                     }
                     
                 }
-                
-                //iterate and create annotations
-              
             }
         }
+        
 
     }
   

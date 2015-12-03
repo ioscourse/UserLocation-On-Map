@@ -20,6 +20,8 @@ class ProfileViewController: UIViewController {
         un = txtusername.text
         if blnExist == false && un != ""
         {
+            user()
+            newuser = true
            let testObject = PFObject(className: "MapLocation")
         testObject["fullname"] = un
         testObject["longitude"] = ""
